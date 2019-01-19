@@ -32,8 +32,11 @@ export default class IndexPage extends React.Component {
       location: { search }
     } = props;
 
-    const query = /query=([^&]*)/.exec(props.location.search)[1];
-    const page = /page=([^&]*)/.exec(props.location.search)[1];
+    let query, page;
+    try {
+      query = /query=([^&]*)/.exec(props.location.search)[1];
+      page = /page=([^&]*)/.exec(props.location.search)[1];
+    } catch (e) {}
 
     super(props);
     this.state = {
